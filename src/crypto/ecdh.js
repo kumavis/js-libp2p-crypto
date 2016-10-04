@@ -2,7 +2,7 @@
 
 const crypto = require('./webcrypto')()
 const nodeify = require('nodeify')
-const BN = require('bn.js')
+const BN = require('asn1.js').bignum
 
 const util = require('./util')
 const toBase64 = util.toBase64

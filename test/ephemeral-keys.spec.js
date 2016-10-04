@@ -38,10 +38,10 @@ describe('generateEphemeralKeyPair', () => {
   describe('go interop', () => {
     it('generates a shared secret', (done) => {
       const curve = fixtures.curve
-      console.log('start', curve)
+
       crypto.generateEphemeralKeyPair(curve, (err, alice) => {
         expect(err).to.not.exist
-        console.log('genreated ephem pair')
+
         alice.genSharedKey(fixtures.bob.public, (err, s1) => {
           expect(err).to.not.exist
           if (err) {
