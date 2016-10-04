@@ -2,9 +2,11 @@
 
 const multihashing = require('multihashing-async')
 const nodeify = require('nodeify')
-const BN = require('bn.js')
 const asn1 = require('asn1.js')
 
+const util = require('./util')
+const toBase64 = util.toBase64
+const toBn = util.toBn
 const crypto = require('./webcrypto')()
 
 const sha2256 = multihashing.createHash('sha2-256')
@@ -186,20 +188,4 @@ exports.jwkToPkcs1 = function (jwk) {
     exponent2: toBn(jwk.dq),
     coefficient: toBn(jwk.qi)
   }, 'der')
-}
-
-// Convert a BN.js instance to a base64 encoded string without padding
-// Adapted from https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#appendix-C
-function toBase64 (bn) {
-  let s = bn.toBuffer('be').toString('base64')
-
-  return s
-    .replace(/(=*)$/, '') // Remove any trailing '='s
-    .replace(/\+/g, '-')  // 62nd char of encoding
-    .replace(/\//g, '_')  // 63rd char of encoding
-}
-
-// Convert a base64 encoded string to a BN.js instance
-function toBn (str) {
-  return new BN(Buffer.from(str, 'base64'))
 }
