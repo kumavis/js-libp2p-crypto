@@ -2,7 +2,7 @@
   "name": "libp2p-crypto",
   "version": "0.6.1",
   "description": "Crypto primitives for libp2p",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "browser": {
     "node-webcrypto-ossl": false,
@@ -43,7 +43,7 @@
     "webcrypto-shim": "^0.1.1"
   },
   "devDependencies": {
-    "aegir": "^8.0.0",
+    "aegir": "^8.1.2",
     "benchmark": "^2.1.1",
     "chai": "^3.5.0",
     "pre-commit": "^1.1.3"
